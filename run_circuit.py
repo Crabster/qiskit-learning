@@ -5,9 +5,9 @@ from qiskit.providers.ibmq import least_busy
 from qiskit.tools.monitor import job_monitor
 import matplotlib.pyplot as plt
 
-from test import test_circuit
-from quantum_teleportation import quantum_teleportation_circuit
-from superdense_coding import superdense_coding_circuit
+from circuits.test import test_circuit
+from circuits.quantum_teleportation import quantum_teleportation_circuit
+from circuits.superdense_coding import superdense_coding_circuit
 
 
 parser = ArgumentParser(description='Run quantum circuit.')
