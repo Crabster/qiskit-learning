@@ -6,8 +6,8 @@ from qiskit.tools.monitor import job_monitor
 import matplotlib.pyplot as plt
 
 from circuits.test import test_circuit
-from circuits.quantum_teleportation import quantum_teleportation_circuit
-from circuits.superdense_coding import superdense_coding_circuit
+from circuits.quantum_teleportation import quantum_teleportation_example
+from circuits.superdense_coding import superdense_coding_example
 
 
 parser = ArgumentParser(description='Run quantum circuit.')
@@ -29,9 +29,9 @@ args = parser.parse_args()
 if args.circuit == 'test':
     qc = test_circuit()
 if args.circuit == 'tp':
-    qc = quantum_teleportation_circuit()
+    qc = quantum_teleportation_example()
 if args.circuit == 'sc':
-    qc = superdense_coding_circuit()
+    qc = superdense_coding_example()
 
 if args.backend == 'qasm_simulator':
     backend = BasicAer.get_backend('qasm_simulator')

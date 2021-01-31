@@ -1,16 +1,16 @@
-from qiskit import QuantumCircuit, QuantumRegister
-from qiskit_common import create_bell_pair
+import qiskit
+
+from .common_gates import *
 
 def test_circuit():
-    qr = QuantumRegister(2) 
-    qc = QuantumCircuit(qr)
+    qr = qiskit.QuantumRegister(1)   
+    cr = qiskit.ClassicalRegister(1)    
+    qc = qiskit.QuantumCircuit(qr, cr)
 
-    qc.x(0)
-    qc.x(1)
-    create_bell_pair(qc, 0, 1)
-
-    qc.measure_all()
-    qc.draw(output='mpl')
+    rand_state = random_state_gate()
+    qc.append(rand_state, [0])
+    qc.append(rand_state.inverse(), [0])
+    qc.measure([0], [0])
     return qc
 
 
