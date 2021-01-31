@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 from circuits.test import test_circuit
 from circuits.quantum_teleportation import quantum_teleportation_example
 from circuits.superdense_coding import superdense_coding_example
-
+from circuits.deutsch_jozsa import deutsch_jozsa_example
+from circuits.bernstein_vazirani import bernstein_vazirani_example
 
 parser = ArgumentParser(description='Run quantum circuit.')
 parser.add_argument('-b', '--backend', metavar='BE', default='qasm_simulator',
@@ -17,7 +18,7 @@ parser.add_argument('-b', '--backend', metavar='BE', default='qasm_simulator',
                              'ibmq_burlington', 'ibmq_essex', 'ibmq_armonk', 'ibmq_rome'],
                     help='backend BE on which will the circuit run')
 parser.add_argument('-c', '--circuit', metavar='QC', required=True,
-                    choices=['test', 'tp', 'sc'],
+                    choices=['test', 'tp', 'sc', 'dj', 'bv'],
                     help='circuit QC to be run')
 parser.add_argument('--shots', type=int, default=1024,
                     help='plot counts histogram of the result')
@@ -32,6 +33,10 @@ if args.circuit == 'tp':
     qc = quantum_teleportation_example()
 if args.circuit == 'sc':
     qc = superdense_coding_example()
+if args.circuit == 'dj':
+    qc = deutsch_jozsa_example()
+if args.circuit == 'bv':
+    qc = bernstein_vazirani_example()
 
 if args.backend == 'qasm_simulator':
     backend = BasicAer.get_backend('qasm_simulator')
