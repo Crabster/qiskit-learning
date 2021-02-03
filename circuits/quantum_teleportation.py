@@ -3,10 +3,7 @@ import qiskit
 from .common_gates import *
 
 def quantum_teleportation_circuit():
-    qr = qiskit.QuantumRegister(3)   
-    crz = qiskit.ClassicalRegister(1, name="cbz")    
-    crx = qiskit.ClassicalRegister(1, name="cbx")    
-    qc = qiskit.QuantumCircuit(qr)
+    qc = qiskit.QuantumCircuit(3)
 
     phi_plus = phi_plus_gate()
     qc.append(phi_plus, [1, 2])
@@ -21,9 +18,7 @@ def quantum_teleportation_circuit():
     return qc
 
 def quantum_teleportation_example():
-    qr = qiskit.QuantumRegister(3)   
-    cr = qiskit.ClassicalRegister(1)    
-    qc = qiskit.QuantumCircuit(qr, cr)
+    qc = qiskit.QuantumCircuit(3, 1)
 
     rand_state = random_state_gate()
     qc.append(rand_state, [0])

@@ -12,7 +12,6 @@ def qft_iteration(n):
     for i in range(n - 1):
         qc.cp(pi / 2**(n - i - 1), i, n - 1)
 
-    print(qc.draw())
     gate = qc.to_gate()
     gate.name = f"QFT_{n}"
     return gate
@@ -27,7 +26,6 @@ def qft_gate(n):
     for i in range(n // 2):
         qc.swap(i, n - i - 1)
 
-    print(qc.draw())
     gate = qc.to_gate()
     gate.name = "QFT"
     return gate
@@ -41,6 +39,5 @@ def qft_example():
     qc.append(qft, range(n))
 
     qc.measure(range(n), range(n))
-    print(qc.draw())
 
     return qc
